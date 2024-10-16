@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Plugin</title>
+</head>
+<body>
+
+<h2>Download Plugin</h2>
+<form id="downloadForm">
+    <label for="name">First Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" name="surname" required><br><br>
+
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label>
+        <input type="checkbox" id="nonCommercial" name="nonCommercial" required>
+        I agree that this plugin will not be used for commercial purposes.
+    </label><br><br>
+
+    <button type="submit">Download Plugin</button>
+</form>
+
+<div id="downloadLink" style="display:none;">
+    <a href="R3C_GeoResilience" download>Click here to download the plugin</a>
+</div>
+
+<script>
+    document.getElementById("downloadForm").addEventListener("submit", function(event){
+        event.preventDefault();
+        
+        var name = document.getElementById("name").value;
+        var surname = document.getElementById("surname").value;
+        var email = document.getElementById("email").value;
+        var nonCommercial = document.getElementById("nonCommercial").checked;
+        
+        if (nonCommercial) {
+            // Store the data or send it to a server if needed (can integrate services like Formspree).
+            console.log("User Info:", { name, surname, email });
+
+            // Show the download link
+            document.getElementById("downloadLink").style.display = "block";
+        } else {
+            alert("You must agree to the non-commercial use terms.");
+        }
+    });
+</script>
+
+</body>
+</html>
